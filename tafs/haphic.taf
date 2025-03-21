@@ -6,4 +6,5 @@ ARGS
         haphic ::*APP-ARGS*::
 RUN
     <container:taf-haphic-v1.0.6:ghcr.io/taffish-org/haphic:1.0.6>
+        source /haphicenv/bin/activate
         ::*MAIN*::
