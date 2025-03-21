@@ -11,5 +11,7 @@ RUN . /haphicenv/bin/activate && cd / && \
     ln -s /HapHiC/haphic /usr/local/bin/haphic && \
     haphic check
 
+ENV PATH=/haphicenv/bin:${PATH}
+
 ENV TAFFISH_ENV=TAFFISH
 ENV TAFFISH_NAME=haphic
