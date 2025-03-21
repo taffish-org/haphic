@@ -6,7 +6,8 @@ RUN apt-get update && apt-get install -y curl git gcc g++ make python3-dev pytho
     cd / && python3 -m venv haphicenv && . /haphicenv/bin/activate && \
     pip install --upgrade pip && pip install pysam portion numpy scipy scikit-learn networkx sparse_dot_mkl matplotlib
 
-RUN cd / && git clone https://github.com/zengxiaofei/HapHiC.git && \
+RUN . /haphicenv/bin/activate && cd / && \
+    git clone https://github.com/zengxiaofei/HapHiC.git && \
     ln -s /HapHiC/haphic /usr/local/bin/haphic && \
     haphic check
 
