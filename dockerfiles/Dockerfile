@@ -13,5 +13,7 @@ RUN . /haphicenv/bin/activate && cd / && \
 
 ENV PATH=/haphicenv/bin:${PATH}
 
+ENV PATH=/HapHiC/utils:${PATH}
+
 ENV TAFFISH_ENV=TAFFISH
 ENV TAFFISH_NAME=haphic

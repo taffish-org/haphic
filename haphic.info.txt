@@ -1,10 +1,33 @@
-# <haphic:1.0.6 | KaiyuanHan | 2025-03-20>
-ARGS
-    <else>
-        haphic --help
-    <main>
-        haphic ::*APP-ARGS*::
-RUN
-    <container:taf-haphic-v1.0.6:ghcr.io/taffish-org/haphic:1.0.6$--env MPLCONFIGDIR=/tmp/matplotlib_cache>
-        source /haphicenv/bin/activate
-        ::*MAIN*::
+# <haphic:1.0.6 | KaiyuanHan | 2025-05-08>
+
+Usage: 
+  * taf-haphic haphic [command] <parameters>
+  * taf-haphic filter_bam ...
+  * taf-haphic [cmd] ...
+
+  Command    Description
+  --------   ----------------------------------------------------------------------
+  pipeline   Execute an automated pipeline consisting of "cluster", "reassign",
+             "sort", and "build". For better result through parameter tuning
+             or to parallelize the "sort" step on a computer cluster, you may
+             run the commands below individually:
+
+  cluster    [Step1] Execute preprocessing and Markov clustering for contigs.
+  reassign   [Step2] Reassign and rescue contigs. Perform additional agglomerative
+                     hierarchical clustering if necessary.
+  sort       [Step3] Order and orient contigs within each group.
+  build      [Step4] Build final scaffolds (pseudomolecules).
+
+  plot       Draw Hi-C contact map for the whole genome or each scaffold.
+  check      Check whether all dependencies are correctly installed.
+  refsort    Order and orient whole scaffolds based on a reference genome.
+
+  allhic     Call a modified version of ALLHiC, in which the hot-start optimization
+             has been fixed (source code: https://github.com/zengxiaofei/allhic).
+  juicer     Show the guide to generate files for Juicebox visualization.
+
+  Use haphic [command] --help/-h to see detailed help for each individual command.
+
+  Visit the GitHub repository for more information:
+  https://github.com/zengxiaofei/HapHiC
+
