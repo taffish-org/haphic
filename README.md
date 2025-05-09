@@ -4,3 +4,4 @@
 - This app is from https://github.com/zengxiaofei/HapHiC
 
 HapHiC: a fast, reference-independent, allele-aware scaffolding tool based on Hi-C data
+(We also add 'bwa', 'samtools', 'samblaster' to this taf-app)

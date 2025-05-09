@@ -1,4 +1,4 @@
-# <haphic:1.0.6 | KaiyuanHan | 2025-05-08>
+# <haphic:1.0.6-taf1 | KaiyuanHan | 2025-05-09>
 
 Usage: 
   * taf-haphic haphic [command] <parameters>

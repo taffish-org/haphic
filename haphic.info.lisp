@@ -1,10 +1,13 @@
 (:name           "haphic")
 (:repo           "taffish-org/haphic")
 (:author         "KaiyuanHan")
-(:version        "1.0.6")
+(:version        "1.0.6-taf1")
 (:intro          "HapHiC: a fast, reference-independent, allele-aware scaffolding tool based on Hi-C data")
 (:dependencies)
 (:functions      "haphic"
+                 "bwa"
+                 "samtools"
+                 "samblaster"
                  "agp_to_fasta"
                  "juicer"
                  "filter_bam"

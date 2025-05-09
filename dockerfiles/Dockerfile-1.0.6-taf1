@@ -1,0 +1,41 @@
+FROM ghcr.io/taffish-org/haphic:1.0.6
+
+LABEL maintainer="taffish@163.com"
+
+WORKDIR /root
+
+ENV PATH=/haphicenv/bin:${PATH}
+ENV PATH=/HapHiC/utils:${PATH}
+
+RUN apt-get update && \
+    apt-get install -y curl git gcc g++ make zlib1g-dev libncurses-dev liblzma-dev libbz2-dev libcurl4-gnutls-dev libcrypto++-dev libdeflate-dev
+
+# install samtools
+RUN cd / && \
+    git clone --recursive https://github.com/samtools/htslib.git && \
+    git clone --recursive https://github.com/samtools/samtools.git && \
+    cd /samtools/ && make && make install
+
+# install bwa
+RUN cd / && \
+    curl -LO https://github.com/lh3/bwa/archive/refs/tags/v0.7.18.tar.gz && \
+    tar -zxvf /v0.7.18.tar.gz && rm /v0.7.18.tar.gz && \
+    cd /bwa-0.7.18/ && make && \
+    cp /bwa-0.7.18/bwa                /usr/local/bin/ && \
+    cp /bwa-0.7.18/qualfa2fq.pl       /usr/local/bin/ && \
+    cp /bwa-0.7.18/xa2multi.pl        /usr/local/bin/ && \
+    cp /bwa-0.7.18/bwakit/run-HLA     /usr/local/bin/ && \
+    cp /bwa-0.7.18/bwakit/run-bwamem  /usr/local/bin/ && \
+    cp /bwa-0.7.18/bwakit/run-gen-ref /usr/local/bin/ && \
+    cp /bwa-0.7.18/bwakit/typeHLA.sh  /usr/local/bin/
+
+# install samblaster
+RUN cd / && \
+    curl -LO https://github.com/GregoryFaust/samblaster/releases/download/v.0.1.26/samblaster-v.0.1.26.tar.gz && \
+    tar -zxvf /samblaster-v.0.1.26.tar.gz && rm /samblaster-v.0.1.26.tar.gz && \
+    cd /samblaster-v.0.1.26/ && \
+    make && \
+    cp /samblaster-v.0.1.26/samblaster /usr/local/bin/
+
+ENV TAFFISH_ENV=TAFFISH
+ENV TAFFISH_NAME=haphic
