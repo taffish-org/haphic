@@ -42,5 +42,7 @@ RUN cd / && \
     make && \
     cp /samblaster-v.0.1.26/samblaster /usr/local/bin/
 
+RUN apt-get install -y default-jdk
+
 ENV TAFFISH_ENV=TAFFISH
 ENV TAFFISH_NAME=haphic
